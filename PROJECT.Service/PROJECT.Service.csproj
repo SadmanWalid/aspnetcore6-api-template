@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PROJECT.DTO\PROJECT.DTO.csproj" />
+    <ProjectReference Include="..\PROJECT.IRepository\PROJECT.IRepository.csproj" />
+    <ProjectReference Include="..\PROJECT.IService\PROJECT.IService.csproj" />
+    <ProjectReference Include="..\PROJECT.Repository\PROJECT.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
