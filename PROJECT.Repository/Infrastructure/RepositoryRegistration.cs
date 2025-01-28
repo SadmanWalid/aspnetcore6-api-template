@@ -2,6 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using PROJECT.Database.Database;
 using PROJECT.IRepository.Infrastructure;
+using PROJECT.IRepository.Interfaces.Security;
+using PROJECT.Repository.Repositories.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +22,9 @@ namespace PROJECT.Repository.Infrastructure
                 optionsBuilder.UseSqlServer(database,
                     options => options.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null));
             });
-     
+
             // Register Repositories DI
+            services.AddTransient<IUserRepository, UserRepository>();
 
             // Add UnitOfWork Dependency Injection
             services.AddTransient<IUnitOfWork, UnitOfWork>();

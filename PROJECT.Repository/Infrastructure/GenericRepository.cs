@@ -55,7 +55,7 @@ namespace PROJECT.Repository.Infrastructure
             return true;
         }
 
-        public virtual async Task<ICollection<T>> GetAsync()
+       public virtual async Task<IEnumerable<T>> GetAsync()
         {
             return await Table.ToListAsync();
         }
