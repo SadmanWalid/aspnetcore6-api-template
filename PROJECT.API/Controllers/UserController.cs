@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using PROJECT.DTO.Security;
 using PROJECT.IRepository.Infrastructure;
@@ -14,10 +15,11 @@ namespace PROJECT.API.Controllers
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
-        public UserController(IUnitOfWork unitOfWork, IUserService userService)
+        public UserController(IUnitOfWork unitOfWork, IUserService userService, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _userService = userService;
+            _mapper = mapper;
 
         }
 
@@ -185,7 +187,7 @@ namespace PROJECT.API.Controllers
                     return NotFound("User not found.");
                 }
 
-                await _userService.DeleteAsync(user);
+                 _userService.DeleteAsync(user);
 
                 var success = await _unitOfWork.CommitAsync();
 
